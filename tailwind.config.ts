@@ -45,6 +45,13 @@ const config = {
           600: "#76828D",
           700: "#ABB8C4",
         },
+        lamaSky: "#C3EBFA",
+        lamaSkyLight: "#EDF9FD",
+        lamaPurple: "#CFCEFF",
+        lamaPurpleLight: "#F1F0FF",
+        lamaYellow: "#FAE27C",
+        lamaYellowLight: "#FEFCE8",
+        lamaGreenLight: "#d8ede8"
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
