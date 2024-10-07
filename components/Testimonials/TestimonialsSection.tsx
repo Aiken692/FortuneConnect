@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
     <section className="py-16 bg-gray-200">
         <div className="container mx-auto text-center">
         <h3 className="text-2xl font-bold mb-8">What Our Clients Say</h3>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center rounded-lg">
             <Carousel className="w-full max-w-xs bg-white">
             <CarouselContent>
                 {testimonials.map((testimonial, index) => (
