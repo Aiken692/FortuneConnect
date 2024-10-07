@@ -22,7 +22,7 @@ const FeatureSection = () => {
       
   return (
     <div>
-        <section className="py-16 bg-gray-50">
+        <section id="feature-section" className="py-16 bg-gray-50">
             <div className="container mx-auto text-center">
                 <h3 className="text-2xl text-red-900 font-bold mb-8">Our Features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

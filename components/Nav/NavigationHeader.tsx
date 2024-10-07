@@ -1,20 +1,21 @@
 import Link from 'next/link';
 import React from 'react'
+import { Button } from '../ui/button';
 
 const NavigationHeader = () => {
 
     const navItems = [
-        { name: 'Home', href: '#', condition: true },
-        { name: 'Features', href: '#', condition: true },
+        { name: 'Home', href: '#hero-section', condition: true },
+        { name: 'Features', href: '#feature-section', condition: true },
         { name: 'Pricing', href: '#', condition: true },
         { name: 'Sign Up', href: '#', condition: true }
       ];
 
     return (
-        <div>
-          <header className="bg-white shadow-md">
-            <div className="container mx-auto p-6 flex justify-between items-center">
-                <h1 className="text-xl font-bold text-red-800">
+
+          
+            <div className="mx-auto p-4 flex justify-between items-center bg-gray-950">
+                <h1 className="text-3xl font-bold text-rose-400">
                     FortuneConnect
                 </h1>
               <nav>
@@ -22,15 +23,19 @@ const NavigationHeader = () => {
                   {navItems.map((item, index) => (
                     item.condition && (
                       <li key={index}>
-                        <Link href={item.href} className="text-gray-800 hover:text-indigo-600">{item.name}</Link>
+                        
+                        <Button variant="link" className="text-white hover:scale-110 ease-in duration-200">
+                          <Link href={item.href}>{item.name}</Link>
+                        </Button>
                       </li>
                     )
                   ))}
                 </ul>
               </nav>
+
             </div>
-          </header>
-        </div>
+          
+
       );
 }
 
