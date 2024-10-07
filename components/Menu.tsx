@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
-
 const menuItems = [
     {
       title: "MENU",
@@ -10,13 +8,13 @@ const menuItems = [
         {
           icon: "/home.png",
           label: "Dashboard",
-          href: "/dash",
+          href: "user",
           visible: ["admin"],
         },
         {
           icon: "/teacher.png",
-          label: "Dependants",
-          href: "/list/teachers",
+          label: "Investments",
+          href: "investments",
           visible: ["admin"],
         },
         {
@@ -27,7 +25,7 @@ const menuItems = [
         },
         {
           icon: "/parent.png",
-          label: "LoansS",
+          label: "Loans",
           href: "/list/parents",
           visible: ["admin",],
         }

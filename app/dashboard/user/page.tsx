@@ -1,4 +1,6 @@
+import Notifications from "@/components/Notifications";
 import CountChart from "@/components/CountChart";
+import EventCalendar from "@/components/EventCalendar";
 import FinanceChart from "@/components/FinanceChart";
 import InvestmentChart from "@/components/InvestmentChart";
 import UserCard from "@/components/UserCard";
@@ -55,8 +57,10 @@ const UserPage = () => {
             </div>
         </div>
 
+      {/* RIGHT */}
       <div className="w-full lg:w-1/3 flex flex-col gap-8">
-      
+        <EventCalendar />
+        <Notifications/>
       </div>
 
     </div>
