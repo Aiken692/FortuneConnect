@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   BarChart,
@@ -15,56 +16,22 @@ import {
 import { Investment } from "./types/portfolio";
 
 
-
 const InvestmentChart = () => {
-
-  const data : Investment[] = [
-    {
-      name: "Mon",
-      revenue: 40,
-      arrears: 60,
-    },
-    {
-      name: "Tue",
-      revenue: 20,
-      arrears: 70,
-    },
-    {
-      name: "Wed",
-      revenue: 50,
-      arrears: 75,
-    },
-    {
-      name: "Thu",
-      revenue: 90,
-      arrears: 75,
-    },
-    {
-      name: "Fri",
-      revenue: 65,
-      arrears: 55,
-    },
-  ];
   
   const [items, setItems] = useState<Investment[]>([]);
 
-  const getAllInvestments = async () => {
-
-    const response = await fetch("https://run.mocky.io/v3/66454ada-7d9f-4b08-a744-adccc3237074");
-    const data = await response.json();
-    return data;
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAllInvestments();
-      setItems(data);
+    const fetchPayments = async () => {
+      try {
+        const response = await axios.get("https://run.mocky.io/v3/8e555c59-51e8-43d5-a523-babbbe977966");
+        setItems(response.data.days);
+      } catch (error) {
+        console.error("Error fetching the payments:", error);
+      }
     };
 
-    fetchData();
-  }, []);
-
-
+    fetchPayments();
+  }, []); 
 
   return (
     <div className="bg-white rounded-lg p-4 h-full">
@@ -76,7 +43,7 @@ const InvestmentChart = () => {
 
       </div>
       <ResponsiveContainer width="100%" height="90%">
-        <BarChart width={500} height={300} data={data} barSize={20}>
+        <BarChart width={500} height={300} data={items} barSize={20}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd" />
           <XAxis
             dataKey="name"

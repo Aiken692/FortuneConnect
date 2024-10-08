@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   RadialBarChart,
@@ -28,24 +29,21 @@ const data = [
 ];
 
 const CountChart = () => {
-//To be finished
+
   const [items, setItems] = useState<Counter[]>([]);
 
-  const getAllCounters = async () => {
-
-    const response = await fetch("https://run.mocky.io/v3/fafb3091-24af-4c04-a362-7189ed63854b");
-    const data = await response.json();
-    return data;
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAllCounters();
-      setItems(data);
+    const fetchcounts = async () => {
+      try {
+        const response = await axios.get("https://run.mocky.io/v3/3e1ae43a-bfc0-4276-8d9c-da0b7b99dc91");
+        setItems(response.data.count);
+      } catch (error) {
+        console.error("Error fetching the counts:", error);
+      }
     };
 
-    fetchData();
-  }, []);
+    fetchcounts();
+  }, []); 
 
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">

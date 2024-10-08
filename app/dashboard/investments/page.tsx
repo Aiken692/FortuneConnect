@@ -106,96 +106,28 @@ const columns: ColumnDef<Payment>[] = [
 
 
 const Investments = () => {
-
-  const payments: Payment[] = [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      name: "stocks",
-    },
-    {
-      id: "489e1d42",
-      amount: 125,
-      status: "processing",
-      name: "bonds",
-    },
-    {
-      id: "d7e2f401",
-      amount: 200,
-      status: "success",
-      name: "real estate",
-    },
-    {
-      id: "3b18c9d1",
-      amount: 80,
-      status: "failed",
-      name: "mutual funds",
-    },
-    {
-      id: "9f5e21c7",
-      amount: 150,
-      status: "processing",
-      name: "ETFs",
-    },
-    {
-      id: "b482a3fd",
-      amount: 50,
-      status: "success",
-      name: "cryptocurrency",
-    },
-    {
-      id: "c12a4d78",
-      amount: 300,
-      status: "pending",
-      name: "precious metals",
-    },
-    {
-      id: "a8f1bc93",
-      amount: 220,
-      status: "success",
-      name: "private equity",
-    },
-    {
-      id: "7f3d5a68",
-      amount: 175,
-      status: "failed",
-      name: "venture capital",
-    },
-    {
-      id: "e36d9b4f",
-      amount: 95,
-      status: "processing",
-      name: "commodities",
-    },
-  ]
   
   const [items, setItems] = useState<Payment[]>([]);
 
-
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("https://run.mocky.io/v3/ed2bd090-5693-4d3a-b04e-678e38994cd4");
-      
-      console.log("response", response.data); // Logs the response data
-      
-      if (response.data.length > 0) {
-        console.log("sdfsdfsdf"); // Debugging line
-        setItems(response.data);  // Updates the state
+    const fetchPayments = async () => {
+      try {
+        const response = await axios.get("https://run.mocky.io/v3/ce49556a-a082-4a46-88f9-12f1286ead2f");
+        setItems(response.data.payments);
+      } catch (error) {
+        console.error("Error fetching the payments:", error);
       }
     };
-  
-    // Call the async function
-    fetchData();
-  }, []);  // Empty dependency array to run once when the component mounts
+
+    fetchPayments();
+  }, []); 
 
 
   return (
-    console.log("items", items), // Debugging line
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={payments}/>
+      <DataTable columns={columns} data={items}/>
     </div>
   )
 }
 
-export default Investments
+export default Investments

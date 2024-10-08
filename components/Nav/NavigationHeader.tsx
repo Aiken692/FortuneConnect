@@ -7,8 +7,8 @@ const NavigationHeader = () => {
     const navItems = [
         { name: 'Home', href: '#hero-section', condition: true },
         { name: 'Features', href: '#feature-section', condition: true },
-        { name: 'Pricing', href: '#', condition: true },
-        { name: 'Sign Up', href: '#', condition: true }
+        { name: 'Pricing', href: '#dashboard', condition: true },
+        { name: 'Dash Board', href: '#', condition: true }
       ];
 
     return (

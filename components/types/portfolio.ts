@@ -24,3 +24,10 @@ export type Payment = {
     status: "pending" | "processing" | "success" | "failed"
     name: string
   }
+
+  export type MonthlyData = {
+    name: string;
+    income: number;
+    expense: number;
+};
+
