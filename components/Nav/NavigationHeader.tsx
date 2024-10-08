@@ -8,7 +8,7 @@ const NavigationHeader = () => {
         { name: 'Home', href: '#hero-section', condition: true },
         { name: 'Features', href: '#feature-section', condition: true },
         { name: 'Pricing', href: '#dashboard', condition: true },
-        { name: 'Dash Board', href: '#', condition: true }
+        { name: 'Dash Board', href: 'dashboard/user', condition: true }
       ];
 
     return (
