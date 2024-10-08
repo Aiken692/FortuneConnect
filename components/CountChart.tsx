@@ -1,11 +1,13 @@
 "use client";
-import Image from "next/image";
+
+import { useEffect, useState } from "react";
 import {
   RadialBarChart,
   RadialBar,
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Counter } from "./types/portfolio";
 
 const data = [
   {
@@ -26,6 +28,25 @@ const data = [
 ];
 
 const CountChart = () => {
+//To be finished
+  const [items, setItems] = useState<Counter[]>([]);
+
+  const getAllCounters = async () => {
+
+    const response = await fetch("https://run.mocky.io/v3/fafb3091-24af-4c04-a362-7189ed63854b");
+    const data = await response.json();
+    return data;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllCounters();
+      setItems(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">
     {/* TITLE */}

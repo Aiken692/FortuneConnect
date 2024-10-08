@@ -1,5 +1,6 @@
 "use client";
-import Image from "next/image";
+
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,36 +12,60 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Investment } from "./types/portfolio";
 
-const data = [
-  {
-    name: "Mon",
-    revenue: 40,
-    arrears: 60,
-  },
-  {
-    name: "Tue",
-    revenue: 20,
-    arrears: 70,
-  },
-  {
-    name: "Wed",
-    revenue: 50,
-    absent: 75,
-  },
-  {
-    name: "Thu",
-    revenue: 90,
-    arrears: 75,
-  },
-  {
-    name: "Fri",
-    revenue: 65,
-    arrears: 55,
-  },
-];
+
 
 const InvestmentChart = () => {
+
+  const data : Investment[] = [
+    {
+      name: "Mon",
+      revenue: 40,
+      arrears: 60,
+    },
+    {
+      name: "Tue",
+      revenue: 20,
+      arrears: 70,
+    },
+    {
+      name: "Wed",
+      revenue: 50,
+      arrears: 75,
+    },
+    {
+      name: "Thu",
+      revenue: 90,
+      arrears: 75,
+    },
+    {
+      name: "Fri",
+      revenue: 65,
+      arrears: 55,
+    },
+  ];
+  
+  const [items, setItems] = useState<Investment[]>([]);
+
+  const getAllInvestments = async () => {
+
+    const response = await fetch("https://run.mocky.io/v3/66454ada-7d9f-4b08-a744-adccc3237074");
+    const data = await response.json();
+    return data;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllInvestments();
+      setItems(data);
+    };
+
+    fetchData();
+  }, []);
+
+
+
   return (
     <div className="bg-white rounded-lg p-4 h-full">
       <div className="flex justify-between items-center">

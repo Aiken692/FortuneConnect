@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import { useEffect, useState } from "react";
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { DataTable } from "@/components/DataTable"
@@ -14,76 +16,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Payment } from "@/components/types/portfolio"
 
-type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  name: string
-}
-
-const payments: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    name: "stocks",
-  },
-  {
-    id: "489e1d42",
-    amount: 125,
-    status: "processing",
-    name: "bonds",
-  },
-  {
-    id: "d7e2f401",
-    amount: 200,
-    status: "success",
-    name: "real estate",
-  },
-  {
-    id: "3b18c9d1",
-    amount: 80,
-    status: "failed",
-    name: "mutual funds",
-  },
-  {
-    id: "9f5e21c7",
-    amount: 150,
-    status: "processing",
-    name: "ETFs",
-  },
-  {
-    id: "b482a3fd",
-    amount: 50,
-    status: "success",
-    name: "cryptocurrency",
-  },
-  {
-    id: "c12a4d78",
-    amount: 300,
-    status: "pending",
-    name: "precious metals",
-  },
-  {
-    id: "a8f1bc93",
-    amount: 220,
-    status: "success",
-    name: "private equity",
-  },
-  {
-    id: "7f3d5a68",
-    amount: 175,
-    status: "failed",
-    name: "venture capital",
-  },
-  {
-    id: "e36d9b4f",
-    amount: 95,
-    status: "processing",
-    name: "commodities",
-  },
-]
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -171,6 +105,89 @@ const columns: ColumnDef<Payment>[] = [
 
 
 const Investments = () => {
+
+  const payments: Payment[] = [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      name: "stocks",
+    },
+    {
+      id: "489e1d42",
+      amount: 125,
+      status: "processing",
+      name: "bonds",
+    },
+    {
+      id: "d7e2f401",
+      amount: 200,
+      status: "success",
+      name: "real estate",
+    },
+    {
+      id: "3b18c9d1",
+      amount: 80,
+      status: "failed",
+      name: "mutual funds",
+    },
+    {
+      id: "9f5e21c7",
+      amount: 150,
+      status: "processing",
+      name: "ETFs",
+    },
+    {
+      id: "b482a3fd",
+      amount: 50,
+      status: "success",
+      name: "cryptocurrency",
+    },
+    {
+      id: "c12a4d78",
+      amount: 300,
+      status: "pending",
+      name: "precious metals",
+    },
+    {
+      id: "a8f1bc93",
+      amount: 220,
+      status: "success",
+      name: "private equity",
+    },
+    {
+      id: "7f3d5a68",
+      amount: 175,
+      status: "failed",
+      name: "venture capital",
+    },
+    {
+      id: "e36d9b4f",
+      amount: 95,
+      status: "processing",
+      name: "commodities",
+    },
+  ]
+  
+  const [items, setItems] = useState<Payment[]>([]);
+
+  const getAllPayments = async () => {
+
+    const response = await fetch("https://run.mocky.io/v3/e0a5d049-995e-49d5-a1f0-fd748db15c1b");
+    const data = await response.json();
+    return data;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllPayments();
+      setItems(data);
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
     <div className="container mx-auto py-10">
       <DataTable columns={columns} data={payments} />
