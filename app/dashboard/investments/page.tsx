@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Payment } from "@/components/types/portfolio"
+import axios from "axios";
 
 
 const columns: ColumnDef<Payment>[] = [
@@ -171,26 +172,28 @@ const Investments = () => {
   
   const [items, setItems] = useState<Payment[]>([]);
 
-  const getAllPayments = async () => {
-
-    const response = await fetch("https://run.mocky.io/v3/e0a5d049-995e-49d5-a1f0-fd748db15c1b");
-    const data = await response.json();
-    return data;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAllPayments();
-      setItems(data);
+      const response = await axios.get("https://run.mocky.io/v3/ed2bd090-5693-4d3a-b04e-678e38994cd4");
+      
+      console.log("response", response.data); // Logs the response data
+      
+      if (response.data.length > 0) {
+        console.log("sdfsdfsdf"); // Debugging line
+        setItems(response.data);  // Updates the state
+      }
     };
-
+  
+    // Call the async function
     fetchData();
-  }, []);
+  }, []);  // Empty dependency array to run once when the component mounts
 
 
   return (
+    console.log("items", items), // Debugging line
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={payments} />
+      <DataTable columns={columns} data={payments}/>
     </div>
   )
 }
