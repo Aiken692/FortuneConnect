@@ -11,71 +11,28 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Jan",
-    income: 4000,
-    expense: 2400,
-  },
-  {
-    name: "Feb",
-    income: 3000,
-    expense: 1398,
-  },
-  {
-    name: "Mar",
-    income: 2000,
-    expense: 9800,
-  },
-  {
-    name: "Apr",
-    income: 2780,
-    expense: 3908,
-  },
-  {
-    name: "May",
-    income: 1890,
-    expense: 4800,
-  },
-  {
-    name: "Jun",
-    income: 2390,
-    expense: 3800,
-  },
-  {
-    name: "Jul",
-    income: 3490,
-    expense: 4300,
-  },
-  {
-    name: "Aug",
-    income: 3490,
-    expense: 4300,
-  },
-  {
-    name: "Sep",
-    income: 3490,
-    expense: 4300,
-  },
-  {
-    name: "Oct",
-    income: 3490,
-    expense: 4300,
-  },
-  {
-    name: "Nov",
-    income: 3490,
-    expense: 4300,
-  },
-  {
-    name: "Dec",
-    income: 3490,
-    expense: 4300,
-  },
-];
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { MonthlyData } from "./types/portfolio";
 
 const FinanceChart = () => {
+
+  const [items, setItems] = useState<MonthlyData[]>([]);
+
+  useEffect(() => {
+    const fetchMonths = async () => {
+      try {
+        const response = await axios.get("https://run.mocky.io/v3/3bff2b87-3df2-466f-a9d9-e390399d7fc0");
+        setItems(response.data.months);
+      } catch (error) {
+        console.error("Error fetching the payments:", error);
+      }
+    };
+
+    fetchMonths();
+  }, []); 
+
+  
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">
       <div className="flex justify-between items-center">
@@ -89,7 +46,7 @@ const FinanceChart = () => {
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data={items}
           margin={{
             top: 5,
             right: 30,

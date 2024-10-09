@@ -23,7 +23,7 @@ const InvestmentChart = () => {
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get("https://run.mocky.io/v3/8e555c59-51e8-43d5-a523-babbbe977966");
+        const response = await axios.get("https://run.mocky.io/v3/a9e11fd6-9800-4694-8734-ab35105dc94c");
         setItems(response.data.days);
       } catch (error) {
         console.error("Error fetching the payments:", error);

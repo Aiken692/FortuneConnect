@@ -112,7 +112,7 @@ const Investments = () => {
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get("https://run.mocky.io/v3/ce49556a-a082-4a46-88f9-12f1286ead2f");
+        const response = await axios.get("https://run.mocky.io/v3/e4643103-3764-4957-af4d-ebf2a502bcd9");
         setItems(response.data.payments);
       } catch (error) {
         console.error("Error fetching the payments:", error);

@@ -10,23 +10,6 @@ import {
 } from "recharts";
 import { Counter } from "./types/portfolio";
 
-const data = [
-  {
-    name: "Total",
-    count: 106,
-    fill: "white",
-  },
-  {
-    name: "Projected Investment",
-    count: 63,
-    fill: "#FAE27C",
-  },
-  {
-    name: "Actual Investment",
-    count: 43,
-    fill: "#C3EBFA",
-  },
-];
 
 const CountChart = () => {
 
@@ -35,7 +18,7 @@ const CountChart = () => {
   useEffect(() => {
     const fetchcounts = async () => {
       try {
-        const response = await axios.get("https://run.mocky.io/v3/3e1ae43a-bfc0-4276-8d9c-da0b7b99dc91");
+        const response = await axios.get("https://run.mocky.io/v3/3daf4a35-9d92-4043-891a-5f98eccd6fdd");
         setItems(response.data.count);
       } catch (error) {
         console.error("Error fetching the counts:", error);
@@ -63,7 +46,7 @@ const CountChart = () => {
           innerRadius="40%"
           outerRadius="100%"
           barSize={32}
-          data={data}
+          data={items}
         >
           <RadialBar background dataKey="count" />
         </RadialBarChart>
