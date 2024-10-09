@@ -8,27 +8,25 @@ import FinanceChart from "@/components/FinanceChart";
 import InvestmentChart from "@/components/InvestmentChart";
 import UserCard from "@/components/UserCard";
 import { Portfolio } from "@/components/types/portfolio";
+import axios from "axios";
 
 
 const UserPage = () => {
 
   const [items, setItems] = useState<Portfolio[]>([]);
 
-  const getAllPortfolios = async () => {
-
-    const response = await fetch("https://run.mocky.io/v3/fafb3091-24af-4c04-a362-7189ed63854b");
-    const data = await response.json();
-    return data;
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAllPortfolios();
-      setItems(data);
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get("https://run.mocky.io/v3/5f00eda3-787d-4025-93dd-28ff14b7b62f");
+        setItems(response.data.count);
+      } catch (error) {
+        console.error("Error fetching the payments:", error);
+      }
     };
 
-    fetchData();
-  }, []);
+    fetchItems();
+  }, []); 
 
   return (
     <div id="dashboard" className="p-4 flex gap-4 flex-col md:flex-row">
