@@ -11,50 +11,50 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 // TEMPORARY
-const events = [
-  {
-    id: 1,
-    title: "Tech Conference 2024",
-    time: "9:00 AM - 5:00 PM",
-    description:
-      "Join industry leaders for a day of insights and networking at the annual Tech Conference. Explore the latest trends in technology and innovation.",
-  },
-  {
-    id: 2,
-    title: "Art & Culture Festival",
-    time: "10:00 AM - 6:00 PM",
-    description:
-      "Celebrate creativity at the Art & Culture Festival. Enjoy exhibitions, live performances, and workshops from local artists.",
-  },
-  {
-    id: 3,
-    title: "Health and Wellness Retreat",
-    time: "8:00 AM - 3:00 PM",
-    description:
-      "Escape the hustle and bustle of daily life at the Health and Wellness Retreat. Participate in yoga sessions, nutrition workshops, and mindfulness activities.",
-  },
-  {
-    id: 4,
-    title: "Business Networking Mixer",
-    time: "6:00 PM - 9:00 PM",
-    description:
-      "Expand your professional network at the Business Networking Mixer. Connect with local entrepreneurs and industry experts while enjoying light refreshments.",
-  },
-  {
-    id: 5,
-    title: "Summer Music Festival",
-    time: "2:00 PM - 11:00 PM",
-    description:
-      "Join us for a day of live music, food trucks, and fun at the Summer Music Festival. Enjoy performances from local bands and artists.",
-  },
-  {
-    id: 6,
-    title: "Coding Bootcamp",
-    time: "10:00 AM - 4:00 PM",
-    description:
-      "Learn to code in a day at our intensive Coding Bootcamp. Perfect for beginners and those looking to sharpen their skills.",
-  },
-];
+// const events = [
+//   {
+//     id: 1,
+//     title: "Tech Conference 2024",
+//     time: "9:00 AM - 5:00 PM",
+//     description:
+//       "Join industry leaders for a day of insights and networking at the annual Tech Conference. Explore the latest trends in technology and innovation.",
+//   },
+//   {
+//     id: 2,
+//     title: "Art & Culture Festival",
+//     time: "10:00 AM - 6:00 PM",
+//     description:
+//       "Celebrate creativity at the Art & Culture Festival. Enjoy exhibitions, live performances, and workshops from local artists.",
+//   },
+//   {
+//     id: 3,
+//     title: "Health and Wellness Retreat",
+//     time: "8:00 AM - 3:00 PM",
+//     description:
+//       "Escape the hustle and bustle of daily life at the Health and Wellness Retreat. Participate in yoga sessions, nutrition workshops, and mindfulness activities.",
+//   },
+//   {
+//     id: 4,
+//     title: "Business Networking Mixer",
+//     time: "6:00 PM - 9:00 PM",
+//     description:
+//       "Expand your professional network at the Business Networking Mixer. Connect with local entrepreneurs and industry experts while enjoying light refreshments.",
+//   },
+//   {
+//     id: 5,
+//     title: "Summer Music Festival",
+//     time: "2:00 PM - 11:00 PM",
+//     description:
+//       "Join us for a day of live music, food trucks, and fun at the Summer Music Festival. Enjoy performances from local bands and artists.",
+//   },
+//   {
+//     id: 6,
+//     title: "Coding Bootcamp",
+//     time: "10:00 AM - 4:00 PM",
+//     description:
+//       "Learn to code in a day at our intensive Coding Bootcamp. Perfect for beginners and those looking to sharpen their skills.",
+//   },
+// ];
 
 interface Eventresponse {
   events: Event[];
